@@ -1,0 +1,72 @@
+.input_checkbox:checked,
+.input_checkbox:not(:checked) {
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: -9999px;
+}
+
+.input_checkbox:checked + label,
+.input_checkbox:not(:checked) + label {
+    display: inline-block;
+    position: relative;
+    padding: 10px 0 10px 48px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.input_checkbox:checked + label:before,
+.input_checkbox:not(:checked) + label:before {
+    content: "";
+    position: absolute;
+    display: block;
+    left: 20px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #9ABBCE;
+    background-color: #ffffff;
+    border-radius: 2px;
+}
+
+.input_checkbox:checked + label:after,
+.input_checkbox:not(:checked) + label:after {
+    content: "";
+    position: absolute;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.input_checkbox:checked + label:after,
+.input_checkbox:not(:checked) + label:after {
+    left: 24px;
+    top: 15px;
+    width: 12px;
+    height: 6px;
+    border-radius: 1px;
+    border-left: 2px solid #2196F3;
+    border-bottom: 2px solid #2196F3;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.input_checkbox:not(:checked) + label:after {
+    opacity: 0;
+}
+
+.input_checkbox:checked + label:after {
+    opacity: 1;
+}
+
+.input_checkbox:checked + label:before {
+    border: 1px solid #2196F3;
+}
+
+.input_checkbox + label:hover {
+    background-color: #F1FCFF;
+} 
