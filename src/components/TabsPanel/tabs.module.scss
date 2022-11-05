@@ -1,7 +1,11 @@
 .tabs_group {
-   max-width: 502px; 
+    width: 100%; 
    display: flex;
    justify-content: flex-end;
+}
+
+.ant-tabs-top>.ant-tabs-nav .ant-tabs-nav-wrap:after {
+    box-shadow: none;
 }
 
 .ant-tabs {
