@@ -1,7 +1,6 @@
 .card {
     margin-bottom: 20px;
     max-width: 502px;
-    height: 184px;
     padding: 20px;
     border-radius: 8px;
     background-color: #fff;
@@ -20,46 +19,23 @@
     color: #2196F3;
 }
 
-.card_body_top {
+.logo_company {
+    width: 110px;
+    height: 36px;
+}
+
+.card_content {
     margin-top: 20px;
+}
+
+.ticket_wrapper {
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
-}
-
-.card_body_left,
-.card_body_center,
-.card_body_right {
-    width: 140px;
-}
-
-.card_route,
-.card_timeTitle,
-.card_transfer {
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 18px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    color: #A0B0B9;
-}
-
-.card_timing,
-.card_time,
-.card_transferName {
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
-    color: #4A4A4A;
 }
 
 @media (max-width: 786px) {
     .card {
         max-width: 100%;
     }
-
-    .card_body_left,
-    .card_body_center,
-    .card_body_right {
-    width: auto;
-}
 }

@@ -1,0 +1,43 @@
+.card_body_left,
+.card_body_center,
+.card_body_right {
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card_route,
+.ticketDuration,
+.ticketTransfer {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #A0B0B9;
+}
+
+.ticketDate,
+.card_time,
+.ticketStops {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #4A4A4A;
+}
+
+@media (max-width: 540px) {
+    .card_body_left,
+    .card_body_center,
+    .card_body_right {
+        width: 100%;
+    }
+
+    .card_body_center {
+        align-items: center;
+    }
+
+    .card_body_right {
+        align-items: flex-end;
+    }
+}

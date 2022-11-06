@@ -1,45 +1,28 @@
-import cardLogo from '../../image/S7_Logo.png'
+import { CardData } from '../router'
+import { generateId, addPrice } from '../specialFunctions'
 
 import styles from './card.module.scss'
 
-export function Card() {
+export function Card(props) {
+  const { ticket } = props
+  const { carrier, price, segments } = ticket
+
+  const tickets = segments.map((item) => {
+    return (
+      <div className={styles.ticket_wrapper} key={generateId()}>
+        <CardData item={item} />
+      </div>
+    )
+  })
   return (
     <div className={styles.card}>
       <div className={styles.card_header}>
-        <span className={styles.card_price}>13 400 Р</span>
+        <span className={styles.card_price}>{addPrice(price)}</span>
         <span className={styles.card_icon}>
-          <img src={cardLogo} alt="logo" />
+          <img className={styles.logo_company} src={`https://pics.avs.io/99/36/${carrier}.png`} alt="Company logo" />
         </span>
       </div>
-      <div className={styles.card_body}>
-        <div className={styles.card_body_top}>
-          <div className={styles.card_body_left}>
-            <div className={styles.card_route}>
-              <span>MOW – HKT</span>
-            </div>
-            <div className={styles.card_timing}>
-              <span>10:45 – 08:00</span>
-            </div>
-          </div>
-          <div className={styles.card_body_center}>
-            <div className={styles.card_timeTitle}>
-              <span>В пути</span>
-            </div>
-            <div className={styles.card_time}>
-              <span>21ч 15м</span>
-            </div>
-          </div>
-          <div className={styles.card_body_right}>
-            <div className={styles.card_transfer}>
-              <span>2 пересадки</span>
-            </div>
-            <div className={styles.card_transferName}>
-              <span>HKG, JNB</span>
-            </div>
-          </div>
-        </div>
-        <div className={styles.card_body_bottom}></div>
-      </div>
+      <div className={styles.card_content}>{tickets}</div>
     </div>
   )
 }
