@@ -21,11 +21,13 @@
 }
 
 .ant-tabs-tab:nth-child(-n+1) {
+    border-right: none;
     border-bottom-left-radius: 8px;
     border-top-left-radius: 8px;
 }
 
 .ant-tabs-tab:nth-child(3) {
+    border-left: none;
     border-bottom-right-radius: 8px;
     border-top-right-radius: 8px;
 }
@@ -82,12 +84,14 @@
 
     .ant-tabs-tab:nth-child(3) {
         margin-top: 10px;
+        border-left: 1px solid #DFE5EC;
         border-bottom-left-radius: 8px;
         border-top-left-radius: 8px;
     }
      
     .ant-tabs-tab:nth-child(1) {
         margin-right: 5px;
+        border-right: 1px solid #DFE5EC;
     }
 
     .ant-tabs-tab:nth-child(2) {

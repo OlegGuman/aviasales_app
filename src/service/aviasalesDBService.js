@@ -1,23 +1,29 @@
-export default class AviasalesService {
-  _apiBase = 'https://front-test.dev.aviasales.ru/'
-
-  async getSearchId() {
-    const id = await fetch(`${this._apiBase}search`)
-    const resId = await id.json()
-    return await this.getTickets(resId.searchId)
+async function dataServer() {
+  async function getData() {
+    const id = await fetch('https://front-test.dev.aviasales.ru/search')
+    return await id.json()
   }
 
-  async getTickets(id) {
-    const res = await fetch(`${this._apiBase}tickets?searchId=${id}`)
+  const { searchId } = await getData()
 
-    if (!res.ok) {
-      throw new Error(`Не удалось получить данные ${res.status}`)
-    }
-
-    const ticketsArr = await res.json()
-    return ticketsArr
+  async function getTickets(id, arr = []) {
+    return await fetch(`https://front-test.dev.aviasales.ru/tickets?searchId=${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.stop) {
+          arr.push(...data.tickets)
+          return getTickets(searchId, arr)
+        }
+        return arr
+      })
+      .catch(() => {
+        return getTickets(searchId, arr)
+      })
   }
+  return getTickets(searchId)
 }
+
+export { dataServer }
 
 //Просто отправь GET-запрос на https://front-test.dev.aviasales.ru/search и получи его.
 //Отправляй GET-запросы на https://front-test.dev.aviasales.ru/tickets и передай searchId полученный из запроса выше GET-параметром.
