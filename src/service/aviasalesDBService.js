@@ -1,13 +1,13 @@
 async function dataServer() {
   async function getData() {
-    const id = await fetch('https://front-test.dev.aviasales.ru/search')
+    const id = await fetch('https://aviasales-test-api.kata.academy/search')
     return await id.json()
   }
 
   const { searchId } = await getData()
 
   async function getTickets(id, arr = []) {
-    return await fetch(`https://front-test.dev.aviasales.ru/tickets?searchId=${id}`)
+    return await fetch(`https://aviasales-test-api.kata.academy/tickets?searchId=${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (!data.stop) {
