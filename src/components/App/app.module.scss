@@ -16,6 +16,16 @@
     column-gap: 20px;
 }
 
+.loader_wrapper {
+    display: flex;
+}
+
+.text_loaded {
+    margin-left: 10px;
+    font-size: 18px;
+    color: #2196F3;
+}
+
 .ant-spin-spinning {
     position: absolute;
     top: 200px;

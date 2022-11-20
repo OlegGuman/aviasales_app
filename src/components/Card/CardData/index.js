@@ -1,4 +1,4 @@
-import { addInfoStops, getTimeTicket, getDateTicket, getTimeDestination } from '../../specialFunctions'
+import { addInfoStops, getTimeTicket, getDateTicket, getTimeDestination } from '../../../utils'
 
 import styles from './cardData.module.scss'
 

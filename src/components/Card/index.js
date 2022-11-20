@@ -1,5 +1,5 @@
 import { CardData } from '../router'
-import { generateId, addPrice } from '../specialFunctions'
+import { generateId, addPrice } from '../../utils'
 
 import styles from './card.module.scss'
 

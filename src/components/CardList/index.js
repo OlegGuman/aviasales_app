@@ -1,22 +1,31 @@
-import { useState } from 'react'
+//import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
 
-import { generateId } from '../specialFunctions'
+import { generateId } from '../../utils'
 import { Card, FooterButton } from '../router'
 
-export function CardList(props) {
-  const { tickets } = props
+export function CardList() {
+  //const { tickets } = props
+  //console.log(tickets)
+  const ticketsArray = useSelector((state) => state.ticketsData.data)
 
-  const [newArray, setNewArray] = useState(tickets.slice(0, 5))
+  //let newArray = ticketsArray.slice(0, 5)
+  const [pageTickets, setPageTickets] = useState([])
+  useEffect(() => {
+    setPageTickets(ticketsArray.slice(0, 5))
+  }, [ticketsArray])
 
+  //const pageArray = ticketsArray.slice(0, 5)
   function addMoreCards() {
-    const num = newArray.length
-    const moreArr = [...newArray]
-    const addCards = tickets.slice(num, num + 5)
+    const num = pageTickets.length
+    const moreArr = [...pageTickets]
+    const addCards = ticketsArray.slice(num, num + 5)
     moreArr.push(...addCards)
-    setNewArray(moreArr)
+    setPageTickets(moreArr)
   }
 
-  const cards = newArray.map((ticket) => {
+  const cards = pageTickets.map((ticket) => {
     return (
       <li key={generateId()}>
         <Card ticket={ticket} />

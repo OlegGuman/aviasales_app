@@ -13,9 +13,8 @@ let filterData = [
 ]
 
 export function FilterPanel() {
-  const filterTicketsState = useSelector((state) => state.transferFilter)
+  const filterTicketsState = useSelector((state) => state.checkboxState)
 
-  console.log(filterTicketsState)
   const checkedState = (id) => {
     let status
     filterTicketsState.forEach((el) => {
@@ -23,11 +22,6 @@ export function FilterPanel() {
         status = el.checked
       }
     })
-    // checkedStatus.checkboxAll.forEach((el) => {
-    //   if (el.id === id) {
-    //     status = el.checked
-    //   }
-    // })
     return status
   }
 

@@ -2,6 +2,15 @@ import { Tabs } from 'antd'
 import 'antd/dist/antd.min.css'
 import { useDispatch, useSelector } from 'react-redux'
 
+import {
+  statusCheap,
+  statusFast,
+  statusOptimal,
+  sortFast,
+  sortCheap,
+  sortOptimal,
+} from '../../redux/actions/actionCreators'
+
 import styles from './tabs.module.scss'
 
 const items = [
@@ -10,18 +19,32 @@ const items = [
   { label: 'оптимальный', key: 'optimal' },
 ]
 export function TabsPanel() {
-  const sortTicketsState = useSelector((state) => state.sortTickets)
   const dispatch = useDispatch()
-  console.log(sortTicketsState)
+  const sortTabsState = useSelector((state) => state.tabsState)
+
+  console.log(sortTabsState)
+
+  function sortTickets(id) {
+    switch (id) {
+      case 'cheap':
+        return dispatch(sortCheap(id))
+      case 'fast':
+        return dispatch(sortFast(id))
+      case 'optimal':
+        return dispatch(sortOptimal(id))
+    }
+    console.log(id)
+  }
 
   function handlerTabs(key) {
+    sortTickets(key)
     switch (key) {
       case 'cheap':
-        return dispatch({ type: 'SORT_CHEAP' })
+        return dispatch(statusCheap())
       case 'fast':
-        return dispatch({ type: 'SORT_FAST' })
+        return dispatch(statusFast())
       case 'optimal':
-        return dispatch({ type: 'SORT_OPTIMAL' })
+        return dispatch(statusOptimal())
     }
   }
 

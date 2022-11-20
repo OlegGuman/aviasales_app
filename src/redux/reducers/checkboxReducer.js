@@ -1,4 +1,10 @@
-//import { combineReducers } from 'redux'
+import {
+  CHECKBOX_STATUS_ALL,
+  CHECKBOX_STATUS_NO_STOPS,
+  CHECKBOX_STATUS_STOPS_ONE,
+  CHECKBOX_STATUS_STOPS_TWO,
+  CHECKBOX_STATUS_STOPS_THREE,
+} from '../actions/actionsType'
 
 const initialStateFilter = [
   { id: 'all', checked: true },
@@ -30,23 +36,23 @@ const transferReducer = (state = initialStateFilter, action) => {
   let isFilterCheckbox = state.filter((item) => item.id !== 'all')
 
   switch (action.type) {
-    case 'ALL_STOPS':
+    case CHECKBOX_STATUS_ALL:
       allCheck = isAllCheckbox.map((item) => Object.assign({}, item, { checked: !item.checked }))
       if (allCheck[0].checked) {
         isFilters = isFilterCheckbox.map((item) => Object.assign({}, item, { checked: true }))
         return [...allCheck, ...isFilters]
       }
       return state.map((item) => Object.assign({}, item, { checked: false }))
-    case 'NO_STOPS':
+    case CHECKBOX_STATUS_NO_STOPS:
       isCheck = state.map((item) => (item.id === 'non-stop' ? toggleChecked(item) : item))
       return modifiedCheckboxState(isCheck, state)
-    case 'STOPS_ONE':
+    case CHECKBOX_STATUS_STOPS_ONE:
       isCheck = state.map((item) => (item.id === 'transfer-1' ? toggleChecked(item) : item))
       return modifiedCheckboxState(isCheck, state)
-    case 'STOPS_TWO':
+    case CHECKBOX_STATUS_STOPS_TWO:
       isCheck = state.map((item) => (item.id === 'transfer-2' ? toggleChecked(item) : item))
       return modifiedCheckboxState(isCheck, state)
-    case 'STOPS_THREE':
+    case CHECKBOX_STATUS_STOPS_THREE:
       isCheck = state.map((item) => (item.id === 'transfer-3' ? toggleChecked(item) : item))
       return modifiedCheckboxState(isCheck, state)
     default:

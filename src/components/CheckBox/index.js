@@ -1,6 +1,17 @@
 import { useDispatch } from 'react-redux'
 
-import { allStops, noStops, stopsOne, stopsTwo, stopsThree } from '../../actions/actions'
+import {
+  addStateAllStops,
+  addStateNoStops,
+  addStateStopsOne,
+  addStateStopsTwo,
+  addStateStopsThree,
+  filterAllStops,
+  filterNoStops,
+  filterStopsOne,
+  filterStopsTwo,
+  filterStopsThree,
+} from '../../redux/actions/actionCreators'
 
 import styles from './checkbox.module.scss'
 
@@ -8,20 +19,28 @@ export function CheckBox(props) {
   const { id, checked } = props
   const dispatch = useDispatch()
 
-  function handlerClick(e) {
-    switch (e.target.id) {
-      case 'all':
-        return dispatch(allStops())
-      case 'non-stop':
-        return dispatch(noStops())
-      case 'transfer-1':
-        return dispatch(stopsOne())
-      case 'transfer-2':
-        return dispatch(stopsTwo())
-      case 'transfer-3':
-        return dispatch(stopsThree())
+  const duoDispatch = (func1, func2, id, isChecked) => {
+    return (dispatch, getState) => {
+      dispatch(func1())
+      dispatch(func2({ id: id, isChecked: isChecked, isAllChecked: getState().checkboxState[0] }))
     }
   }
+
+  function handlerClick({ target: { id, checked } }) {
+    switch (id) {
+      case 'all':
+        return dispatch(duoDispatch(addStateAllStops, filterAllStops, id, checked))
+      case 'non-stop':
+        return dispatch(duoDispatch(addStateNoStops, filterNoStops, id, checked))
+      case 'transfer-1':
+        return dispatch(duoDispatch(addStateStopsOne, filterStopsOne, id, checked))
+      case 'transfer-2':
+        return dispatch(duoDispatch(addStateStopsTwo, filterStopsTwo, id, checked))
+      case 'transfer-3':
+        return dispatch(duoDispatch(addStateStopsThree, filterStopsThree, id, checked))
+    }
+  }
+
   return (
     <>
       <input
