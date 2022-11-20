@@ -1,4 +1,3 @@
-//import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 
@@ -6,17 +5,13 @@ import { generateId } from '../../utils'
 import { Card, FooterButton } from '../router'
 
 export function CardList() {
-  //const { tickets } = props
-  //console.log(tickets)
   const ticketsArray = useSelector((state) => state.ticketsData.data)
 
-  //let newArray = ticketsArray.slice(0, 5)
   const [pageTickets, setPageTickets] = useState([])
   useEffect(() => {
     setPageTickets(ticketsArray.slice(0, 5))
   }, [ticketsArray])
 
-  //const pageArray = ticketsArray.slice(0, 5)
   function addMoreCards() {
     const num = pageTickets.length
     const moreArr = [...pageTickets]

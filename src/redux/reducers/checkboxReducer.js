@@ -61,7 +61,3 @@ const transferReducer = (state = initialStateFilter, action) => {
 }
 
 export default transferReducer
-
-// export default combineReducers({
-//   transferReducer: transferReducer,
-// })

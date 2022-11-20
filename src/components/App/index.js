@@ -15,8 +15,6 @@ export function App() {
   const checkboxAllStatus = useSelector((state) => state.checkboxState)
 
   const isAllNotChecked = checkboxAllStatus.every((item) => !item.checked)
-  console.log(ticketsArr)
-  console.log(isAllNotChecked)
 
   useEffect(() => {
     dispatch(dataServer())

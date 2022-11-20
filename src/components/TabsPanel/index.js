@@ -1,6 +1,6 @@
 import { Tabs } from 'antd'
 import 'antd/dist/antd.min.css'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import {
   statusCheap,
@@ -20,9 +20,6 @@ const items = [
 ]
 export function TabsPanel() {
   const dispatch = useDispatch()
-  const sortTabsState = useSelector((state) => state.tabsState)
-
-  console.log(sortTabsState)
 
   function sortTickets(id) {
     switch (id) {
@@ -33,7 +30,6 @@ export function TabsPanel() {
       case 'optimal':
         return dispatch(sortOptimal(id))
     }
-    console.log(id)
   }
 
   function handlerTabs(key) {
